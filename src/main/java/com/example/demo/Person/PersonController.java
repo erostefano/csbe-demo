@@ -11,7 +11,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/persons")
-    public String getPerson() {
-        return personService.getPerson();
+    public Person getPerson() {
+        return personService.getPerson().get();
     }
 }

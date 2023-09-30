@@ -11,7 +11,7 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Optional<Person> getPerson() {
-        return personRepository.findById(1);
+    public Optional<Person> getPerson(int id) {
+        return personRepository.findById(id);
     }
 }

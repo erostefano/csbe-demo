@@ -12,7 +12,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/persons/{id}")
-    public Person getPerson(@PathVariable int id) {
-        return personService.getPerson(id).get();
+    public PersonDto getPerson(@PathVariable int id) {
+        return personService.getPerson(id);
     }
 }

@@ -11,7 +11,11 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Optional<Person> getPerson(int id) {
-        return personRepository.findById(id);
+    public PersonDto getPerson(int id) {
+        Person person = personRepository.findById(id).orElseThrow();
+        PersonDto personDto = new PersonDto();
+        personDto.setLastName(person.getLastName());
+        personDto.setFirstName(person.getFirstName());
+        return personDto;
     }
 }

@@ -1,0 +1,17 @@
+spring:
+  # DataSource properties
+  datasource:
+    url: jdbc:mysql://lx16.hoststar.hosting:3306/ch76252_equalsDB
+    username: ch76252_cas_sd
+    password: qf5kDh2akI34Nf6R1omYJ3GubU.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # Hibernate properties
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect

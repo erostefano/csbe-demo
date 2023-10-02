@@ -1,5 +1,6 @@
 package com.example.demo.Person;
 
+import com.example.demo.Animal.AnimalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,12 @@ public class PersonService {
         PersonDto personDto = new PersonDto();
         personDto.setLastName(person.getLastName());
         personDto.setFirstName(person.getFirstName());
+        personDto.setAnimals(person.getAnimals().stream().map(animal -> {
+            AnimalDto animalDto = new AnimalDto();
+            animalDto.setId(animal.getId());
+            animalDto.setName(animal.getName());
+            return animalDto;
+        }).toList());
         return personDto;
     }
 
@@ -26,9 +33,14 @@ public class PersonService {
                     PersonDto personDto = new PersonDto();
                     personDto.setLastName(person.getLastName());
                     personDto.setFirstName(person.getFirstName());
+                    personDto.setAnimals(person.getAnimals().stream().map(animal -> {
+                        AnimalDto animalDto = new AnimalDto();
+                        animalDto.setId(animal.getId());
+                        animalDto.setName(animal.getName());
+                        return animalDto;
+                    }).toList());
                     return personDto;
                 })
                 .toList();
     }
-
 }

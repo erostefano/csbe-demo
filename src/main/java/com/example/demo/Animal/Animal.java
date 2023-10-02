@@ -1,6 +1,7 @@
 package com.example.demo.Animal;
 
 import com.example.demo.Person.Person;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity

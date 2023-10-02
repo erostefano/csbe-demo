@@ -1,12 +1,15 @@
 package com.example.demo.Person;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.example.demo.Animal.Animal;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
@@ -20,6 +23,9 @@ public class Person {
 
     @Column
     private String password;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Animal> animals = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -59,5 +65,13 @@ public class Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }

@@ -10,7 +10,7 @@ public class PersonService {
     private PersonRepository personRepository;
 
     public PersonDto getPerson(int id) {
-        Person person = personRepository.findById(id).orElseThrow();
+        Person person = personRepository.findById(id);
         PersonDto personDto = new PersonDto();
         personDto.setLastName(person.getLastName());
         personDto.setFirstName(person.getFirstName());

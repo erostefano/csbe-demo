@@ -2,7 +2,9 @@ package com.example.demo.Person;
 
 import com.example.demo.Animal.AnimalDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -13,7 +15,9 @@ public class PersonService {
     private PersonRepository personRepository;
 
     public PersonDto getPerson(int id) {
-        Person person = personRepository.findById(id);
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
         PersonDto personDto = new PersonDto();
         personDto.setLastName(person.getLastName());
         personDto.setFirstName(person.getFirstName());

@@ -18,6 +18,17 @@ public class PersonService {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
+        return toPersonDto(person);
+    }
+
+    public List<PersonDto> getPersons() {
+        return personRepository
+                .findAll()
+                .stream().map(this::toPersonDto)
+                .toList();
+    }
+
+    private PersonDto toPersonDto(Person person) {
         PersonDto personDto = new PersonDto();
         personDto.setLastName(person.getLastName());
         personDto.setFirstName(person.getFirstName());
@@ -28,23 +39,5 @@ public class PersonService {
             return animalDto;
         }).toList());
         return personDto;
-    }
-
-    public List<PersonDto> getPersons() {
-        return personRepository
-                .findAll()
-                .stream().map(person -> {
-                    PersonDto personDto = new PersonDto();
-                    personDto.setLastName(person.getLastName());
-                    personDto.setFirstName(person.getFirstName());
-                    personDto.setAnimals(person.getAnimals().stream().map(animal -> {
-                        AnimalDto animalDto = new AnimalDto();
-                        animalDto.setId(animal.getId());
-                        animalDto.setName(animal.getName());
-                        return animalDto;
-                    }).toList());
-                    return personDto;
-                })
-                .toList();
     }
 }

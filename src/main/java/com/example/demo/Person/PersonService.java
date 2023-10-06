@@ -30,6 +30,7 @@ public class PersonService {
 
     private PersonDto toPersonDto(Person person) {
         PersonDto personDto = new PersonDto();
+        personDto.setId(person.getId());
         personDto.setLastName(person.getLastName());
         personDto.setFirstName(person.getFirstName());
         personDto.setAnimals(person.getAnimals().stream().map(animal -> {

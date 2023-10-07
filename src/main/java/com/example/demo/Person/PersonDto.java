@@ -1,13 +1,18 @@
 package com.example.demo.Person;
 
 import com.example.demo.Animal.AnimalDto;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDto {
     private int id;
+
+    @NotBlank
     private String lastName;
+
+    @NotBlank
     private String firstName;
     private List<AnimalDto> animals = new ArrayList<>();
 

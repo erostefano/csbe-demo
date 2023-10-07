@@ -22,7 +22,8 @@ public class PersonController {
     }
 
     @PostMapping("/persons")
-    public void addPerson(@RequestBody PersonDto personDto) {
+    public String addPerson(@RequestBody PersonDto personDto) {
         personService.addPerson(personDto);
+        return "Person added";
     }
 }

@@ -23,6 +23,6 @@ public class PersonController {
 
     @PostMapping("/persons")
     public void addPerson(@RequestBody PersonDto personDto) {
-
+        personService.addPerson(personDto);
     }
 }

@@ -1,6 +1,8 @@
 package com.example.demo.Person;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,9 @@ public class PersonController {
     }
 
     @PostMapping("/persons")
-    public String addPerson(@RequestBody PersonDto personDto) {
+    public ResponseEntity<String> addPerson(@RequestBody PersonDto personDto) {
         personService.addPerson(personDto);
-        return "Person added";
+        return ResponseEntity.status(HttpStatus.CREATED).body("Person added");
     }
+
 }

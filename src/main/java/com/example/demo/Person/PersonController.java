@@ -29,4 +29,10 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Person added");
     }
 
+    @DeleteMapping("/persons/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable int id) {
+        personService.deletePerson(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Person deleted");
+    }
+
 }

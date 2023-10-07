@@ -35,6 +35,10 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    public void deletePerson(int id) {
+        personRepository.deleteById(id);
+    }
+
     private PersonDto toPersonDto(Person person) {
         PersonDto personDto = new PersonDto();
         personDto.setId(person.getId());

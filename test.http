@@ -14,6 +14,10 @@ GET 192.168.1.29:8080/persons/1
 
 ###
 
+GET [fe80::5adf:66c0:1f35:ea72]:8080/persons/1
+
+###
+
 POST localhost:8080/auth/registration
 Content-Type: application/json
 

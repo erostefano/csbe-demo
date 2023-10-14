@@ -10,9 +10,15 @@ public class AuthConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        // alle anderen Endpoint sind blockiert
+
+        httpSecurity.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
+            authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/registration").permitAll();
+        });
+
         return httpSecurity
-                .authorizeHttpRequests((authz) -> authz
-                        .anyRequest().permitAll()
+                .authorizeHttpRequests((auth) -> auth
+                        .anyRequest().denyAll()
                 )
                 .csrf().disable().build();
     }

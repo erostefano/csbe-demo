@@ -15,9 +15,6 @@ public class AuthConfig {
         });
 
         return httpSecurity
-                .authorizeHttpRequests((auth) -> auth
-                        .anyRequest().denyAll()
-                )
                 .csrf().disable().build();
     }
 

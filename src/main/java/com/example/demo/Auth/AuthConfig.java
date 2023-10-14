@@ -11,15 +11,15 @@ public class AuthConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-            authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/registration").permitAll();
-            authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
-        });
-
-        httpSecurity.httpBasic(Customizer.withDefaults());
-
         return httpSecurity
-                .csrf().disable().build();
+                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/registration").permitAll();
+                    authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
+                })
+                .httpBasic(Customizer.withDefaults())
+                .csrf()
+                .disable()
+                .build();
     }
 
 }

@@ -28,13 +28,6 @@ public class PersonService {
                 .toList();
     }
 
-    public void addPerson(PersonDto personDto) {
-        Person person = new Person();
-        person.setFirstName(personDto.getFirstName());
-        person.setLastName(personDto.getLastName());
-        personRepository.save(person);
-    }
-
     public void deletePerson(int id) {
         personRepository.deleteById(id);
     }

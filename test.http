@@ -14,12 +14,14 @@ GET 192.168.1.29:8080/persons/1
 
 ###
 
-POST localhost:8080/persons
+POST localhost:8080/auth/registration
 Content-Type: application/json
 
 {
   "lastName": "Jane",
-  "firstName": "Doe"
+  "firstName": "Doe",
+  "userName": "jane_doe",
+  "password": "pw12345789"
 }
 
 ###

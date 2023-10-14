@@ -23,11 +23,6 @@ public class PersonController {
         return personService.getPersons();
     }
 
-    @PostMapping("/persons")
-    public ResponseEntity<String> addPerson(@RequestBody PersonDto personDto) {
-        personService.addPerson(personDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Person added");
-    }
 
     @DeleteMapping("/persons/{id}")
     public ResponseEntity<String> deletePerson(@PathVariable int id) {

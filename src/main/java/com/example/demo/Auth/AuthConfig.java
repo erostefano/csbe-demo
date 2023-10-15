@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class AuthConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception { // TODO: find correct impl for Spring Boot 3
         return httpSecurity
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/registration").permitAll();

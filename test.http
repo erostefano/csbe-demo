@@ -3,19 +3,11 @@ GET localhost:8080/persons
 ###
 
 GET localhost:8080/persons/1
+
+###
+
+GET localhost:8080/persons/1
 Authorization: Basic VXNlcjozOTk1ZDQ1ZS1mMzljLTQzZGItOTAzOC0zZjdmMDlkMDFkNzI=
-
-###
-
-GET 127.0.0.1:8080/persons/1
-
-###
-
-GET 192.168.1.29:8080/persons/1
-
-###
-
-GET [fe80::5adf:66c0:1f35:ea72]:8080/persons/1
 
 ###
 
@@ -28,7 +20,3 @@ Content-Type: application/json
   "userName": "jane_doe",
   "password": "pw12345789"
 }
-
-###
-
-DELETE localhost:8080/persons/5

@@ -20,4 +20,13 @@ public class JwtService {
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }
+
+    public String getUserName(String jwt) {
+        return Jwts
+                .parser()
+                .setSigningKey(secret)
+                .parseClaimsJws(jwt)
+                .getBody()
+                .getSubject();
+    }
 }

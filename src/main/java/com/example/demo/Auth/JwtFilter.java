@@ -38,7 +38,6 @@ public class JwtFilter extends OncePerRequestFilter {
         String userName = jwtService.getUserName(jwt);
         Optional<Person> person = personRepository.findByUserName(userName);
 
-        // TODO: throw 401/403 when auth not ok
         if (person.isPresent()) {
             List<GrantedAuthority> authorities = List.of(() -> person.get().isAdmin() ? "admin" : "user");
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userName, null, authorities);

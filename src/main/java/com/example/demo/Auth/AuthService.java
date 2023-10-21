@@ -31,10 +31,8 @@ public class AuthService {
         Person person = personRepository.findByUserName(loginDto.getUserName())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if (bCryptPasswordEncoder.matches(loginDto.getPassword(), person.getPassword())) {
-            System.out.println("Successful");
-        } else {
-            System.out.println("Not Successful");
+        if (!bCryptPasswordEncoder.matches(loginDto.getPassword(), person.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
     }
 }

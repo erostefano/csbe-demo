@@ -21,7 +21,7 @@ public class AuthConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/*").permitAll();
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/persons").hasAuthority("admin");
-                    authorizationManagerRequestMatcherRegistry.requestMatchers("/persons/*").hasAuthority("admin");
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/persons/*").hasAnyAuthority("admin", "user");
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })
                 .httpBasic(AbstractHttpConfigurer::disable)

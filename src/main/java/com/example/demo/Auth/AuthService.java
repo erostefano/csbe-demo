@@ -12,7 +12,7 @@ public class AuthService {
     @Autowired
     private PersonRepository personRepository;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     public void register(RegistrationDto registrationDto) {
         Person person = new Person();

@@ -6,11 +6,6 @@ GET localhost:8080/persons/1
 
 ###
 
-GET localhost:8080/persons/1
-Authorization: Basic VXNlcjozOTk1ZDQ1ZS1mMzljLTQzZGItOTAzOC0zZjdmMDlkMDFkNzI=
-
-###
-
 POST localhost:8080/auth/registration
 Content-Type: application/json
 

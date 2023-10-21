@@ -24,6 +24,9 @@ public class Person {
     @Column
     private String password;
 
+    @Column
+    private boolean isAdmin;
+
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Animal> animals = new ArrayList<>();
 
@@ -73,5 +76,13 @@ public class Person {
 
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

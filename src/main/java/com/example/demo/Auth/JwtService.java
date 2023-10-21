@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-    String secret = "MySecret";
+    private final String secret = "MySecret";
 
     public String createJwt(String userName) {
         return Jwts

@@ -3,6 +3,7 @@ package com.example.demo.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,7 +22,8 @@ public class AuthConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/*").permitAll();
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/persons").hasAuthority("admin");
-                    authorizationManagerRequestMatcherRegistry.requestMatchers("/persons/*").hasAnyAuthority("admin", "user");
+                    authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.GET, "/persons/*").hasAnyAuthority("admin", "user");
+                    authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE, "/persons/*").hasAuthority("admin");
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })
                 .httpBasic(AbstractHttpConfigurer::disable)

@@ -14,7 +14,7 @@ public class AuthConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-                    authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/registration").permitAll();
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/*").permitAll();
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })
                 .httpBasic(Customizer.withDefaults())

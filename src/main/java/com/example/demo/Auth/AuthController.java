@@ -18,4 +18,9 @@ public class AuthController {
         authService.register(registrationDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered");
     }
-}
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
+        authService.login(loginDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Login successful");
+    }}

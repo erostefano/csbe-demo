@@ -20,3 +20,14 @@ Content-Type: application/json
   "userName": "jane_doe",
   "password": "pw12345789"
 }
+
+
+###
+
+POST localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "userName": "jane_doe",
+  "password": "pw12345789"
+}

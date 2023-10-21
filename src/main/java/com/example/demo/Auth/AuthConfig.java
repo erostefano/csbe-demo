@@ -20,6 +20,7 @@ public class AuthConfig {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/auth/*").permitAll();
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/persons").hasAuthority("admin");
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })
                 .httpBasic(AbstractHttpConfigurer::disable)

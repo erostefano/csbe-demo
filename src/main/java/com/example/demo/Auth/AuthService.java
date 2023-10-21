@@ -8,13 +8,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
-
 @Service
 public class AuthService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private JwtService jwtService;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
@@ -27,12 +28,14 @@ public class AuthService {
         personRepository.save(person);
     }
 
-    public void login(LoginDto loginDto) {
+    public String getJwt(LoginDto loginDto) {
         Person person = personRepository.findByUserName(loginDto.getUserName())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         if (!bCryptPasswordEncoder.matches(loginDto.getPassword(), person.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
+
+        return jwtService.createJwt(person.getUserName());
     }
 }

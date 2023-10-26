@@ -3,7 +3,7 @@ spring:
   datasource:
     url: jdbc:mysql://lx16.hoststar.hosting:3306/ch76252_csbe
     username: ch76252_cas_sd
-    password: qf5kDh2akI34Nf6R1omYJ3GubU.
+    password: h2ak3284792fsjkdfhiw38urmYubU.
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # Hibernate properties

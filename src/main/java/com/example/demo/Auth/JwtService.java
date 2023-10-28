@@ -15,7 +15,7 @@ public class JwtService {
                 .builder()
                 .setIssuer("CsBE")
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() * 60 * 60 * 24 * 20))
+                .setExpiration(new Date(System.currentTimeMillis() * 60 * 60 * 24 * 20)) // TODO: 10/28/23 fix time
                 .setSubject(userName)
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();

@@ -1,15 +1,18 @@
 spring:
   # DataSource properties
   datasource:
-    url: jdbc:mysql://lx16.hoststar.hosting:3306/ch76252_csbe
-    username: ch76252_cas_sd
-    password: qf5kDh2akI34Nf6R1omYJ3GubU.
+    url: jdbc:mysql://localhost:3306/csbe
+    username: root
+    password: mypass
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # Hibernate properties
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: update
+
+  flyway:
+    url: jdbc:mysql://localhost:3306/csbe
+    user: root
+    password: mypass
 springdoc:
   default-produces-media-type: application/json
